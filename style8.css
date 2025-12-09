@@ -1,0 +1,385 @@
+/* ======== FONDO DE LIBRO ANTIGUO ======== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    background: url('IMAGENES/pergamino-textura.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #3b260a;
+    overflow-x: hidden;
+}
+
+/* VIGNETTE DE ENFOQUE COMO LIBRO ILUMINADO */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center,
+        rgba(255, 240, 200, 0.35),
+        rgba(0, 0, 0, 0.55)
+    );
+    pointer-events: none;
+}
+
+/* POLVO DORADO BRILLANTE */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(gold 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 180px 180px, 140px 140px;
+    opacity: 0.25;
+    animation: polvo 25s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes polvo {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 800px 800px, -800px 800px; }
+}
+
+/* ======== CONTENEDOR DE CADA CUENTO (PÁGINA) ======== */
+.cuento {
+    width: 85%;
+    margin: 50px auto;
+    padding: 40px;
+    background: rgba(255, 245, 220, 0.82);
+    border-radius: 15px;
+    border: 3px solid rgba(139, 94, 38, 0.85);
+    box-shadow: 
+        0 0 25px rgba(255, 220, 150, 0.8),
+        0 0 60px rgba(255, 200, 120, 0.6),
+        inset 0 0 25px rgba(150, 90, 40, 0.5);
+    backdrop-filter: blur(3px);
+    position: relative;
+    animation: aparecer 1.2s ease forwards;
+}
+
+/* BORDES ENVEJECIDOS COMO PÁGINA ANTIGUA */
+.cuento::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    background: url('IMAGENES/pergamino-borde.png');
+    background-size: cover;
+    opacity: 0.28;
+    pointer-events: none;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ======== TITULOS COMO LIBRO LEGENDARIO ======== */
+h1 {
+    font-size: 50px;
+    font-family: "Cinzel", serif;
+    color: #8b5e2b;
+    text-shadow:
+        0 0 10px gold,
+        0 0 25px rgb(255, 240, 150),
+        1px 1px 2px #000;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    animation: brilloTitulo 3s infinite alternate;
+}
+
+@keyframes brilloTitulo {
+    0%   { text-shadow: 0 0 10px gold; }
+    100% { text-shadow: 0 0 20px rgb(255, 200, 80); }
+}
+
+/* ======== TEXTO DE HISTORIA ======== */
+p {
+    font-size: 20px;
+    line-height: 1.75;
+    text-align: justify;
+    color: #3c2607;
+    padding: 20px;
+    background: rgba(255, 245, 220, 0.45);
+    border-radius: 10px;
+    box-shadow: inset 0 0 15px rgba(150, 90, 40, 0.25);
+}
+
+/* ======== IMÁGENES DE LOS CUENTOS ======== */
+img {
+    max-width: 85%;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 4px solid rgba(139, 94, 38, 0.8);
+    box-shadow:
+        0 0 15px rgba(255, 220, 160, 0.8),
+        0 0 30px rgba(255, 190, 120, 0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* BRILLO AL PASAR EL MOUSE */
+img:hover {
+    transform: scale(1.04);
+    box-shadow:
+        0 0 25px gold,
+        0 0 50px rgb(255, 220, 120),
+        0 0 80px rgb(255, 180, 80);
+}
+
+
+
+
+
+/* ======== DECORACIÓN EXTRA PARA EL TOPE DEL LIBRO ======== */
+
+/* CONTENEDOR GENERAL */
+.top-libro {
+    width: 100%;
+    padding: 35px 10px;
+    background: url('IMAGENES/pergamino-textura.jpg');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 6px solid gold;
+    border-top: 6px solid gold;
+    box-shadow: 0 0 20px gold, inset 0 0 25px rgba(255, 215, 100, 0.6);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    animation: brilloLibro 4s infinite alternate;
+}
+
+/* ADORNOS SUPERIOR E INFERIOR */
+.adorno-superior,
+.adorno-inferior {
+    width: 90%;
+    height: 35px;
+    margin: 0 auto;
+    background: url('IMAGENES/adorno-dorado.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.85;
+}
+
+/* TÍTULO PRINCIPAL */
+.top-libro h1 {
+    font-family: "Cinzel", serif;
+    font-size: 55px;
+    font-weight: bold;
+    color: #8b5e2b;
+    text-shadow:
+        0 0 15px gold,
+        0 0 40px #fff1b0,
+        2px 2px 3px #3d2b00;
+    margin: 10px 0;
+}
+
+/* SUBTÍTULO */
+.top-libro .sub {
+    font-size: 22px;
+    color: #5c3b0a;
+    font-style: italic;
+    text-shadow: 0 0 8px gold;
+    margin-top: -5px;
+}
+
+/* EFECTO DE BRILLO SUAVE */
+@keyframes brilloLibro {
+    0% { 
+        box-shadow: 0 0 20px gold, inset 0 0 20px rgba(255, 215, 100, 0.5); 
+    }
+    100% { 
+        box-shadow: 0 0 40px gold, inset 0 0 45px rgba(255, 215, 100, 0.8); 
+    }
+}
+
+
+
+
+
+/* ======== ENCABEZADO TIPO HECHIZO ======== */
+.top-hechizo {
+    width: 100%;
+    padding: 45px 10px 55px;
+    background: radial-gradient(circle, rgba(40,0,60,0.8), rgba(10,0,20,0.9)),
+                url('IMAGENES/pergamino-textura.jpg');
+    background-size: cover;
+    background-blend-mode: overlay;
+    text-align: center;
+    border-bottom: 4px solid gold;
+    box-shadow: 0 0 35px rgba(145, 0, 255, 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+/* TITULO HECHIZO */
+.top-hechizo h1 {
+    font-family: "Cinzel", serif;
+    font-size: 50px;
+    color: #d8baff;
+    text-shadow: 0 0 20px #b466ff, 0 0 40px #ea80ff;
+    margin-bottom: 5px;
+}
+
+/* SUBTÍTULO */
+.top-hechizo .sub {
+    font-size: 20px;
+    color: #ffd9ff;
+    font-style: italic;
+    text-shadow: 0 0 10px #ff99ff;
+}
+
+/* ======== RUNAS MÁGICAS FLOTANDO ======== */
+.runa {
+    position: absolute;
+    font-size: 35px;
+    color: #e6c2ff;
+    opacity: 0.7;
+    animation: flotar 6s infinite ease-in-out;
+    text-shadow: 0 0 15px #c586ff, 0 0 30px #c084ff;
+}
+
+.runa1 { top: 10px; left: 20px; animation-delay: 0s; }
+.runa2 { top: 60px; right: 40px; animation-delay: 1s; }
+.runa3 { bottom: 15px; left: 50%; animation-delay: 2s; }
+
+@keyframes flotar {
+    0% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-18px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 0.6; }
+}
+
+/* ======== LÍNEA MÁGICA BAJO EL TÍTULO ======== */
+.linea-magica {
+    width: 80%;
+    height: 4px;
+    margin: 18px auto 0;
+    background: linear-gradient(90deg,
+        transparent,
+        #c889ff,
+        #ffccff,
+        #c889ff,
+        transparent
+    );
+    box-shadow: 0 0 15px #d56bff, 0 0 25px #ffbdfc;
+    animation: pulso 3s infinite alternate;
+}
+
+@keyframes pulso {
+    0% { opacity: 0.6; transform: scaleX(0.95); }
+    100% { opacity: 1; transform: scaleX(1); }
+}
+
+
+
+/* ======== FONDO MÁGICO CON CHISPAS DE HADA ======== */
+body {
+    background: radial-gradient(circle at center,
+        rgba(30, 0, 50, 0.9),
+        rgba(10, 0, 25, 0.95)
+    );
+    background-size: 200% 200%;
+    animation: moverFondo 25s infinite alternate ease-in-out;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ANIMACIÓN DEL FONDO */
+@keyframes moverFondo {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* ======== CHISPAS DE HADA (PARTÍCULAS ANIMADAS) ======== */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image:
+        radial-gradient(rgba(255, 255, 255, 0.8) 2px, transparent 2px),
+        radial-gradient(rgba(255, 200, 255, 0.7) 2px, transparent 2px),
+        radial-gradient(rgba(180, 150, 255, 0.75) 2px, transparent 2px);
+
+    background-size: 180px 180px, 250px 250px, 140px 140px;
+
+    animation: chispas 18s linear infinite;
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+/* ANIMACIÓN DE LAS CHISPAS */
+@keyframes chispas {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    50% { background-position: 80px 120px, -120px 40px, 60px -80px; }
+    100% { background-position: 0 0, 0 0, 0 0; }
+}
+
+
+
+
+
+/* ======== HADAS QUE SIGUEN AL MOUSE ======== */
+.hada-mouse {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+
+    background: radial-gradient(circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 200, 255, 0.9) 40%,
+        rgba(255, 160, 255, 0.5) 70%,
+        transparent 100%
+    );
+
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: hadaMouse 1.5s ease-out forwards;
+    box-shadow:
+        0 0 12px #ffbaff,
+        0 0 25px #ff7fff,
+        0 0 35px #ff3fff;
+    z-index: 9999;
+}
+
+/* ANIMACIÓN DE APARICIÓN + DESVANECIMIENTO */
+@keyframes hadaMouse {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -90%) scale(1.4);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -130%) scale(0.8);
+    }
+}
+
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 35px;
+    background: #fbead2;
+    border: 40px solid transparent;
+    border-image: linear-gradient(45deg, #5c3c1d, #c29c67, #5c3c1d) 1;
+    box-shadow:
+        inset 0 0 80px #4a3219,
+        inset 0 0 25px #2a1a0f,
+        0 0 30px rgba(0,0,0,0.3);
+}
